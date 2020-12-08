@@ -20,7 +20,7 @@ def scrape_all():
         "news_p":news_p,
         "featured_image":featured_image(browser),
         "mars_facts":facts_html_table(),
-        # "mars_hems":hemisphere_image_urls(browser)
+        "mars_hems":hemisphere_image_urls(browser)
         }
     browser.quit()
     return data
@@ -91,8 +91,39 @@ def facts_html_table():
 
 def hemisphere_image_urls(browser):
 
+    #url for mars hemispheres
+    hem_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
 
+    #retrieve page with splinter
+    browser.visit(hem_url)  
 
+    #iterate through each link to find the title and image url
+    links=browser.find_by_css("a.product-item h3")
+
+    #empty list for hemisphere image urls dictionaries
+    hemisphere_image_urls = []
+
+    #for loop for all hemisphere links
+    for x in range(len(links)):
+        mars = {}
+
+        browser.find_by_css("a.product-item h3")[x].click()
+
+        hem_soup=bs(browser.html, 'lxml')
+
+        title = hem_soup.find("h2", class_="title").text
+        img_url = hem_soup.find("img", class_="wide-image")['src']
+        img_url_full = f"https://astrogeology.usgs.gov{img_url}"
+
+        mars['title']= title
+        mars['img_url'] = img_url_full
+
+        hemisphere_image_urls.append(mars)
+
+        browser.back()
+    browser.quit()
+
+    return hemisphere_image_urls
 
 
 
