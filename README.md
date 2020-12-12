@@ -50,7 +50,12 @@ In this assignment, I've built a web application that scrapes various websites f
 
 **Below are screenshots of the final application.**
 
-![top half of webpage](Mission_to_Mars/Final Application Screenshots/Top Half of Mission to Mars app.png)
-![bottom half of webpage](Mission_to_Mars/Final Application Screenshots/Bottom Half of Mission to Mars app.png)
+*Top Half*
+
+![top half of webpage](Mission_to_Mars/Final_Screenshots/Top_Half_of_Page.png)
+
+*Bottom Half*
+
+![bottom half of webpage](Mission_to_Mars/Final_Screenshots/Bottom_Half_of_Page.png)
 
 
